@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import ro.uvt.info.dw.model.TimeSeriesDataDTO;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
 
 @RestController
-@RequestMapping(path = "/tsData", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/api/tsData", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TimeSeriesDataController {
 
     /**
@@ -28,18 +30,18 @@ public class TimeSeriesDataController {
      * @return an array of TimeSeries records
      */
     @GetMapping
-    public TimeSeriesDataDTO getTimeSeriesData(
+    public List<TimeSeriesDataDTO> getTimeSeriesData(
         @RequestParam("assetId") String assetId,
         @RequestParam("tsDefinitionId") String tsDefinitionId,
         @RequestParam("startBusinessDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startBusinessDate,
         @RequestParam("endBusinessDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endBusinessDate,
         @RequestParam(name = "includeAttributes", defaultValue = "false") boolean includeAttributes
     ) {
-        return new TimeSeriesDataDTO(
+        return Collections.singletonList(new TimeSeriesDataDTO(
             assetId,
             tsDefinitionId,
             startBusinessDate,
             endBusinessDate,
-            includeAttributes);
+            includeAttributes));
     }
 }
