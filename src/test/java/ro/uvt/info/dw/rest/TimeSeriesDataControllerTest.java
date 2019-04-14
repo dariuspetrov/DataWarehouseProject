@@ -24,8 +24,7 @@ public class TimeSeriesDataControllerTest {
     private MockMvc mvc;
 
     @Test
-    public void givenTimeSeriesParameters_whenGetTimeSeriesData_thenReturnJsonArray()
-            throws Exception {
+    public void givenTimeSeriesParameters_whenGetTimeSeriesData_thenReturnJsonArray() throws Exception {
 
         TimeSeriesDataDTO dto = new TimeSeriesDataDTO(
             "asset",
