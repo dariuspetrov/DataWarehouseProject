@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ro.uvt.info.dw.model.TimeSeriesDataDTO;
+import ro.uvt.info.dw.model.AttributesResponse;
+import ro.uvt.info.dw.model.TimeSeriesDataResponse;
+import ro.uvt.info.dw.model.TimeSeriesRecordResponse;
+import ro.uvt.info.dw.model.TimeSeriesResponse;
 
 import java.time.LocalDate;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -18,7 +22,7 @@ public class TimeSeriesDataController {
 
     /**
      * Usage example
-     *  curl "http://localhost:8080/tsData?assetId=WIKI/AAPL&tsDefinitionId=QUANDL.WIKI&startBusinessDate=2019-01-01&endBusinessDate=2019-01-20"
+     *  curl "http://localhost:8080/api/tsData?assetId=WIKI/AAPL&tsDefinitionId=QUANDL.WIKI&startBusinessDate=2019-01-01&endBusinessDate=2019-01-20"
      *
      * Note: This implementation echos the request parameters as a JSON response
      *
@@ -30,18 +34,22 @@ public class TimeSeriesDataController {
      * @return an array of TimeSeries records
      */
     @GetMapping
-    public List<TimeSeriesDataDTO> getTimeSeriesData(
+    public TimeSeriesDataResponse getTimeSeriesData(
         @RequestParam("assetId") String assetId,
         @RequestParam("tsDefinitionId") String tsDefinitionId,
         @RequestParam("startBusinessDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startBusinessDate,
         @RequestParam("endBusinessDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endBusinessDate,
         @RequestParam(name = "includeAttributes", defaultValue = "false") boolean includeAttributes
     ) {
-        return Collections.singletonList(new TimeSeriesDataDTO(
-            assetId,
-            tsDefinitionId,
-            startBusinessDate,
-            endBusinessDate,
-            includeAttributes));
+        //TODO: Validate input parameters: startBusinessDate <= endBusinessDate
+
+        List<TimeSeriesRecordResponse> records = new ArrayList<>();
+        for (LocalDate date = startBusinessDate; date.isBefore(endBusinessDate); date = date.plusDays(1)) {
+            records.add(new TimeSeriesRecordResponse(date, new HashMap<>()));
+        }
+
+        return new TimeSeriesDataResponse(
+            new TimeSeriesResponse(assetId, tsDefinitionId, records),
+            includeAttributes ? new AttributesResponse() : null);
     }
 }
