@@ -8,8 +8,7 @@ import java.util.stream.Collectors;
 
 public class CreateKeyspaceTest {
 
-    private static String CLUSTER_IP  = "10.11.9.138";
-    //public static String CLUSTER_IP  = "localhost";
+    public static String CLUSTER_IP  = "localhost";
     private static int PORT = 9042;
     private static String USER = "cassandra";
     private static String PASSWORD = "cassandra";
