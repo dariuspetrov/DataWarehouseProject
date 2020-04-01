@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'teaching'
+group 'data-warehouse-starter'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -12,13 +12,14 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok:1.18.2'
-    annotationProcessor 'org.projectlombok:lombok:1.18.2'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
-    compile 'com.datastax.cassandra:cassandra-driver-core:3.6.0'
+    compile group: 'com.datastax.oss', name: 'java-driver-core', version: '4.5.1'
+    // compile 'com.datastax.cassandra:cassandra-driver-core:3.6.0'
     compile 'org.springframework.boot:spring-boot-starter-web:2.1.4.RELEASE'
 
-    testCompile group: 'org.cassandraunit', name: 'cassandra-unit', version:'3.5.0.1'
+    // testCompile group: 'org.cassandraunit', name: 'cassandra-unit', version:'3.5.0.1'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.4.RELEASE'
 }
