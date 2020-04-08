@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ro.uvt.info.dw.model.AttributesResponse;
-import ro.uvt.info.dw.model.TimeSeriesDataResponse;
-import ro.uvt.info.dw.model.TimeSeriesRecordResponse;
-import ro.uvt.info.dw.model.TimeSeriesResponse;
+import ro.uvt.info.dw.model.web.AttributesResponse;
+import ro.uvt.info.dw.model.web.TimeSeriesDataResponse;
+import ro.uvt.info.dw.model.web.TimeSeriesRecordResponse;
+import ro.uvt.info.dw.model.web.TimeSeriesResponse;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -17,6 +17,8 @@ dependencies {
 
     compile 'com.datastax.cassandra:cassandra-driver-core:3.6.0'
     compile 'org.springframework.boot:spring-boot-starter-web:2.1.4.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-data-cassandra:2.2.6.RELEASE'
+
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.4.RELEASE'
