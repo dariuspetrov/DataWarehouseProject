@@ -9,6 +9,6 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 public class TimeSeriesRecordResponse {
-    private LocalDate businessDate;
-    private Map<String, Object> values;
+    private final LocalDate businessDate;
+    private final Map<String, Object> values;
 }

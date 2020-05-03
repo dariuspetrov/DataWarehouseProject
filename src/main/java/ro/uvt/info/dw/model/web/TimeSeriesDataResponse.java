@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class TimeSeriesDataResponse {
-    private TimeSeriesResponse tsData;
-    private AttributesResponse attributes;
+    private final TimeSeriesResponse tsData;
+    private final AttributesResponse attributes;
 }
