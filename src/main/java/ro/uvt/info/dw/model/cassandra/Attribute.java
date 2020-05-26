@@ -37,4 +37,14 @@ public class Attribute implements TemporalEntity<Attribute> {
     public DataType getDataType() {
         return DataType.valueOf(this.dataType);
     }
+
+    @Override
+    public Date systemTime() {
+        return null;
+    }
+
+    @Override
+    public Attribute systemTime(Date date) {
+        return null;
+    }
 }

@@ -5,16 +5,15 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ro.uvt.info.dw.model.cassandra.Asset;
 import ro.uvt.info.dw.model.persistance.WarehouseRepository;
-
-import java.util.ArrayList;
+import ro.uvt.info.dw.model.web.AssetResponse;
 
 @RequiredArgsConstructor
 
 
 @RestController
 @RequestMapping(path = "/api/assets", produces = MediaType.APPLICATION_JSON_VALUE)
-public class AssetController{
-    private final WarehouseRepository<Asset, String> assetsRepo;
+public class AssetsController{
+    private WarehouseRepository<Asset, String> assetsRepo; //TODO why is final?
 
 
     /**
@@ -28,12 +27,12 @@ public class AssetController{
      * @return an array of TimeSeries records
      */
     @GetMapping
-    public ArrayList<String> getAll(
+    public Iterable<Asset> getAll(
             @RequestParam( value = "offset", defaultValue = "0") Integer offset,
             @RequestParam(value = "limit", defaultValue = "20") Integer limit
 
     ) {
-        return assetsRepo.findAll(id);
+        return assetsRepo.findAll(String.valueOf(offset));
     }
 
     @GetMapping("/{assetId")

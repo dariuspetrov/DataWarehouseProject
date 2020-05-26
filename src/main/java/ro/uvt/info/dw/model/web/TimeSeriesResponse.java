@@ -8,7 +8,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class TimeSeriesResponse {
-    private final String assetId;
-    private final String tsDefinitionId;
-    private final List<TimeSeriesRecordResponse> records;
+    private String assetId;
+    private String tsDefinitionId;
+    private List<TimeSeriesRecordResponse> records;
+
+
+
 }

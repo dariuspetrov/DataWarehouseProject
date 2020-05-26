@@ -1,3 +1,4 @@
+/*
 package ro.uvt.info.dw.persistance.cassandra;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -39,4 +40,4 @@ public class SpringDataCassandraConfiguration extends AbstractCassandraConfigura
                 ? super.getSchemaAction()
                 : SchemaAction.valueOf(schemaAction);
     }
-}
+}*/

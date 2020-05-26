@@ -3,9 +3,12 @@ package ro.uvt.info.dw.model.persistance.cassandra;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.CrudRepository;
 import ro.uvt.info.dw.model.persistance.WarehouseRepository;
+import ro.uvt.info.dw.model.web.AssetResponse;
+
+import java.io.Serializable;
 
 @RequiredArgsConstructor
-public class SpringDataWarehouseRepositoryImpl<E, K>
+public class SpringDataWarehouseRepositoryImpl<E, K extends Serializable>
         implements WarehouseRepository<E, K> {
     private CrudRepository<E, K> springDataRepository;
 
@@ -25,8 +28,8 @@ public class SpringDataWarehouseRepositoryImpl<E, K>
     }
 
     @Override
-    public E findLatest(K partitionKey) {
-// TODO
+    public AssetResponse findLatest(K partitionKey) {
+// TODOS
         return null;
     }
 
